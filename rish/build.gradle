@@ -12,6 +12,7 @@ android {
         externalNativeBuild {
             cmake {
                 arguments '-DANDROID_STL=none'
+                arguments '-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON'
             }
         }
     }
@@ -33,6 +34,7 @@ android {
             path 'src/main/cpp/CMakeLists.txt'
         }
     }
+    ndkVersion "28.1.13356709"
 }
 
 dependencies {
