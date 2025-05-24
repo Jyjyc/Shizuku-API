@@ -6,7 +6,6 @@ import android.app.Instrumentation;
 import android.content.Context;
 import android.content.ContextHidden;
 import android.ddm.DdmHandleAppName;
-import android.os.Build;
 import android.os.IBinder;
 import android.os.UserHandle;
 import android.os.UserHandleHidden;
@@ -65,9 +64,7 @@ public class UserService {
 
             //noinspection InstantiationOfUtilityClass
             UserHandle userHandle = Refine.unsafeCast(
-                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-                            ? UserHandleHidden.of(userId)
-                            : new UserHandleHidden(userId));
+                    UserHandleHidden.of(userId));
             Context context = Refine.<ContextHidden>unsafeCast(systemContext).createPackageContextAsUser(pkg, Context.CONTEXT_INCLUDE_CODE | Context.CONTEXT_IGNORE_SECURITY, userHandle);
             Field mPackageInfo = context.getClass().getDeclaredField("mPackageInfo");
             mPackageInfo.setAccessible(true);
