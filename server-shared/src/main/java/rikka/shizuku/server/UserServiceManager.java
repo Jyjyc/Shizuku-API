@@ -98,7 +98,7 @@ public abstract class UserServiceManager {
         }
     }
 
-    public int addUserService(IShizukuServiceConnection conn, Bundle options, int callingApiVersion) {
+    public int addUserService(IShizukuServiceConnection conn, Bundle options, int callingApiVersion, boolean onetime) {
         Objects.requireNonNull(conn, "connection is null");
         Objects.requireNonNull(options, "options is null");
 
@@ -118,7 +118,7 @@ public abstract class UserServiceManager {
         String processNameSuffix = options.getString(USER_SERVICE_ARG_PROCESS_NAME);
         boolean debug = options.getBoolean(USER_SERVICE_ARG_DEBUGGABLE, false);
         boolean noCreate = options.getBoolean(USER_SERVICE_ARG_NO_CREATE, false);
-        boolean daemon = options.getBoolean(USER_SERVICE_ARG_DAEMON, true);
+        boolean daemon = !onetime && options.getBoolean(USER_SERVICE_ARG_DAEMON, true);
         boolean use32Bits = options.getBoolean(USER_SERVICE_ARG_USE_32_BIT_APP_PROCESS, false);
         String key = packageName + ":" + (tag != null ? tag : className);
 

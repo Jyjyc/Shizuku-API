@@ -232,14 +232,17 @@ public abstract class Service<
         int callingUid = Binder.getCallingUid();
         int callingPid = Binder.getCallingPid();
         int callingApiVersion;
+        boolean onetime;
 
         ClientRecord clientRecord = clientManager.findClient(callingUid, callingPid);
         if (clientRecord == null) {
             callingApiVersion = ShizukuApiConstants.SERVER_VERSION;
+            onetime = false;
         } else {
             callingApiVersion = clientRecord.apiVersion;
+            onetime = clientRecord.onetime;
         }
-        return userServiceManager.addUserService(conn, options, callingApiVersion);
+        return userServiceManager.addUserService(conn, options, callingApiVersion, onetime);
     }
 
     @Override
