@@ -17,6 +17,7 @@ public class ClientRecord {
     public final String packageName;
     public final int apiVersion;
     public boolean allowed;
+    public boolean onetime;
 
     public ClientRecord(int uid, int pid, IShizukuApplication client, String packageName, int apiVersion) {
         this.uid = uid;
@@ -24,6 +25,7 @@ public class ClientRecord {
         this.client = client;
         this.packageName = packageName;
         this.allowed = false;
+        this.onetime = false;
         this.apiVersion = apiVersion;
     }
 

@@ -1,8 +1,8 @@
 package rikka.shizuku;
 
-import androidx.annotation.RestrictTo;
-
 import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX;
+
+import androidx.annotation.RestrictTo;
 
 public class ShizukuApiConstants {
 
